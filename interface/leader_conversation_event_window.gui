@@ -1,0 +1,244 @@
+guiTypes = {
+	containerWindowType = {
+		name = "LeaderConversationEventWindow"
+		size = { width = 1100 height = 560 }
+		orientation = center
+		origo = center
+		moveable = yes
+		clipping = no
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tile_large_upper_right_bg"
+		}
+		### BACKGROUND ART ###
+		iconType = {
+			name = "event_picture"
+			spriteType = "GFX_leader_recruitment_bg_renowned"
+			position = { x = 1 y = 1 }
+			scale = 1.36
+			alwaysTransparent = yes
+		}
+		buttonType = {
+			name = "close"
+			quadTextureSprite = "GFX_close"
+			position = { x = -45 y = 16 }
+			orientation = upper_right
+			pdx_tooltip = "CLOSE_TITLE"
+		}
+		### HEADER ###
+		containerWindowType = {
+			name = "header"
+			size = { width = 705 height = 0 }
+			position = { x = 0 y = 0 }
+			orientation = upper_right
+			origo = upper_right
+			iconType = {
+				name = "hex_bg_left"
+				spriteType = "GFX_hex_center_bg"
+				position = { x = -79 y = 22 }
+				orientation = center_up
+				centerPosition = yes
+				alwaysTransparent = yes
+			}
+			iconType = {
+				name = "hex_bg_right"
+				spriteType = "GFX_hex_center_bg"
+				position = { x = 79 y = 22 }
+				orientation = center_up
+				centerPosition = yes
+				alwaysTransparent = yes
+			}
+			iconType = {
+				name = "header_line"
+				spriteType = "GFX_line_center"
+				position = { x = 0 y = 42 }
+				orientation = center_up
+				centerPosition = yes
+				alwaysTransparent = yes
+			}
+		}
+		### PORTRAIT CONTAINER ###
+		containerWindowType = {
+			name = "portrait_locator"
+			position = { x = 0 y = 0 }
+			size = { width = 400 height = 500 }
+			clipping = yes
+			background = {
+				name = "background"
+				quadTextureSprite = "GFX_invisible"
+			}
+		}
+		### LEADER COUNTRY DETAILS ###
+		containerWindowType = {
+			name = "country_details_container"
+			position = { x = 10 y = 400 }
+			size = { width = 385 height = 60 }
+			background = {
+				name = "bg"
+				spriteType = "GFX_tiles_dark_area_cut_8"
+			}
+			instantTextBoxType = {
+				name = "country_name"
+				font = "font_text_20"
+				text = ""
+				position = { x = 50 y = 5 }
+				maxWidth = 325
+				maxHeight = 50
+				fixedSize = yes
+				format = left
+				vertical_alignment = center
+				text_color_code = "E"
+			}
+		}
+		buttonType = {
+			name = "leader_country_flag"
+			quadTextureSprite = "GFX_empire_flag_48_golden_frame"
+			position = { x = 6 y = 401 }
+			#alwaysTransparent = yes
+		}
+		containerWindowType = {
+			name = "content_container"
+			size = { width = 685 height = -10 }
+			position = { x = -10 y = 0 }
+			orientation = upper_right
+			origo = upper_right
+			### TITLE ###
+			instantTextBoxType = {
+				name = "event_window_heading"
+				font = "font_header_20"
+				text = "DIPLOMACY"
+				position = { x = -340 y = 9 }
+				orientation = center_up
+				maxWidth = 680
+				maxHeight = 24
+				format = center
+				vertical_alignment = center
+				alwaysTransparent = yes
+				#alwaysTransparent = yes
+			}
+			### DESCRIPTION ###
+			containerWindowType = {
+				name = "description_container"
+				position = { x = 0 y = 56 }
+				size = { width = 685 height = 0 } # height is set in code
+				background = {
+					name = "description_frame"
+					spriteType = "GFX_tiles_frame_light"
+				}
+				background = {
+					name = "description_dark"
+					spriteType = "GFX_tiles_dark_area_cut_8"
+					alwaysTransparent = yes
+				}
+				instantTextBoxType = {
+					name = "description"
+					font = "font_lore_large"
+					position = { x = 21 y = 15 }
+					maxWidth = 643
+					maxHeight = 530
+					format = left
+					text_color_code = "L"
+					scrollbarType = "standardlistbox_slider_thick_small"
+				}
+			}
+			### OPTIONS ###
+			listboxType = {
+				name = "option_list"
+				position = { x = 0 y = 0 }
+				size = { x = 682 y = 160 }
+				spacing = 1
+				scrollbarType = "standardlistbox_slider_thick_small"
+			}
+		}
+		buttonType = {
+			name = "tts_button"
+			spriteType = "GFX_button_tts_start"
+			position = { x = -50 y = 20 }
+			orientation = upper_right
+			shortcut = "t"
+		}
+	}
+	# These paddings and offsets are required because description 
+	# and option list positions and sizes are adjusted in code
+	positionType = {
+		name = "leader_conversation_description_padding_y"
+		# vertical padding between heading and description section
+		position = { x = 0 y = 32 }
+	}
+	positionType = {
+		name = "leader_conversation_option_list_relative_offset_x"
+		# option list position offset relative to the list parent
+		position = { x = 0 y = 0 }
+	}
+	positionType = {
+		name = "leader_conversation_option_list_padding_y"
+		# vertical padding between description section and option list
+		position = { x = 0 y = 10 }
+	}
+	positionType = {
+		name = "leader_conversation_bottom_padding_y"
+		# vertical padding between option list and the bottom edge of the window
+		position = { x = 0 y = 20 }
+	}
+	### OPTION ENTRIES ###
+	containerWindowType = {
+		name = "leader_conversation_event_option_entry"
+		size = { width = 685 height = 32 }
+		if_scaled_resolution = {
+			min_height = 1440
+			size = { width = 685 height = 42 }
+		}
+		background = {
+			name = "background"
+			spriteType = "GFX_tiles_dark_area_cut_8"
+			alwaysTransparent = yes
+		}
+		buttonType = {
+			name = "option_button"
+			spriteType = "GFX_event_button_650_24"
+			position = { x = -337 y = -8 }
+			orientation = center_up
+			buttonFont = "font_text_14"
+			buttonText = "OPTION_TEXT"
+			if_scaled_resolution = {
+				min_height = 1440
+				spriteType = "GFX_event_button_650_34"
+				buttonFont = "font_text_18"
+			}
+			clicksound = confirmation
+		}
+		overlappingElementsBoxType = {
+			name = "trigger_icons"
+			position = { x = 10 y = 1 }
+			if_scaled_resolution = {
+				min_height = 1440
+				position = { x = 10 y = 6 }
+			}
+			size = { x = 90 y = 30 }
+			format = left
+		}
+		# UIOD_WIP
+		overlappingElementsBoxType = {
+			name = "effect_icons"
+			position = { x = 10 y = 1 }
+			if_scaled_resolution = {
+				min_height = 1440
+				position = { x = 10 y = 6 }
+			}
+			size = { x = 90 y = 30 }
+			format = left
+		}
+		iconType = {
+			name = "selector_gui_presence_icon"
+			spriteType = "GFX_coop_presence_indicator"
+			position = { x = -40 y = 5 }
+			orientation = upper_right
+			scale = 0.55
+			if_scaled_resolution = {
+				min_height = 1440
+				position = { x = -52 y = 5 }
+				scale = 0.8
+			}
+		}
+	}
+}

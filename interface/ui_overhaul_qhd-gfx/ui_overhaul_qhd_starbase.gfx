@@ -1,0 +1,17 @@
+spriteTypes = {
+	# starbase_view.gui
+	corneredTileSpriteType = {
+		name = "GFX_ui_colonist_frame"
+		textureFile = "gfx/interface/planetview/tiles_frame_allowed.dds"
+		borderSize = { x = 5 y = 5 }
+	}
+	spriteType = {
+		name = "GFX_ui_starbase_building_slot"
+		textureFile = "gfx/ui_overhaul_qhd/starbase/ui_starbase_building_slot.dds"
+		effectFile = "gfx/FX/buttonstate.shader"
+	}
+	spriteType = {
+		name = "GFX_ui_starbase_locked_slot"
+		textureFile = "gfx/ui_overhaul_qhd/starbase/ui_starbase_locked_slot.dds"
+	}
+}
