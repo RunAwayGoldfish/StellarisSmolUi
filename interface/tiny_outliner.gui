@@ -1002,7 +1002,7 @@ guiTypes = {
 		containerWindowType = {
 			name = "constructions"
 			size = { width = 130 height = 20 }
-			position = { x = -206 y = 2 }
+			position = { x = -230 y = 2 }
 			orientation = upper_right
 			overlappingElementsBoxType = {
 				name = "box"
@@ -1018,7 +1018,7 @@ guiTypes = {
 		iconType = {
 			name = "progress"
 			position = { x = 18 y = 3 }
-			spriteType = "GFX_outliner_starbase_construction_progressbar_2"
+			spriteType = "GFX_outliner_planet_construction_progressbar"
 		}
 		iconType = {
 			name = "building"
