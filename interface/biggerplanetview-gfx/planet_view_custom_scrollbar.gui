@@ -1,0 +1,85 @@
+guiTypes = {
+	scrollbarType = {
+		name = "bpv_standardlistbox_slider_thick"
+		slider = "listboxSliderButton"
+		track = "listboxTrackButton"
+		leftbutton = "upButton"
+		rightbutton = "downButton"
+		size = { x = 16 y = 86 }
+		borderSize = { x = 16 y = 16 }
+		priority = 100
+		maxValue = 1
+		minValue = 0
+		stepSize = 30
+		startValue = 0
+		horizontal = 0
+		guiButtonType = {
+			name = "listboxSliderButton"
+			quadTextureSprite = "GFX_ui_scroll_slider"
+		}
+		guiButtonType = {
+			name = "listboxTrackButton"
+			quadTextureSprite = "GFX_ui_scroll_bg"
+		}
+		guiButtonType = {
+			parent = "listboxSliderButton"
+			name = "upButton"
+			quadTextureSprite = "GFX_ui_scroll_down"
+		}
+		guiButtonType = {
+			parent = "listboxSliderButton"
+			name = "downButton"
+			quadTextureSprite = "GFX_ui_scroll_up"
+		}
+	}
+	extendedScrollbarType = {
+		name = "bpv_right_vertical_slider_thick"
+ 		size = { width = 16 height = 16 }
+		startValue = 0
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_ui_scroll_bg"
+		}
+		track = {
+			name = "Track"
+			quadTextureSprite = "GFX_ui_scroll_bg"
+		}
+		slider = {
+			name = "Slider"
+			quadTextureSprite = "GFX_ui_scroll_slider"
+		}
+		increaseButton = {
+			name = "Increase"
+			quadTextureSprite = "GFX_ui_scroll_down"
+		}
+		decreaseButton = {
+			name = "Decrease"
+			quadTextureSprite = "GFX_ui_scroll_up"
+		}
+	}
+	extendedScrollbarType = {
+		name = "bpv_right_vertical_slider_thick_small"
+ 		size = { width = 16 height = 16 }
+		startValue = 0
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_ui_scroll_bg"
+		}
+		track = {
+			name = "Track"
+			quadTextureSprite = "GFX_ui_scroll_bg"
+		}
+		slider = {
+			name = "Slider"
+			quadTextureSprite = "GFX_ui_scroll_slider_small"
+		}
+		increaseButton = {
+			name = "Increase"
+			quadTextureSprite = "GFX_ui_scroll_down"
+		}
+		decreaseButton = {
+			name = "Decrease"
+			quadTextureSprite = "GFX_ui_scroll_up"
+		}
+	}
+}
