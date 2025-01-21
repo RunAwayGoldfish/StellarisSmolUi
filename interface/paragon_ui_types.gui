@@ -223,7 +223,7 @@ guiTypes = {
 			}
 		}
 	}
-	### PORTRAIT COMPONENT VERTICAL_SMALL ### ASTRAL RIFT
+	### PORTRAIT COMPONENT VERTICAL_SMALL (Archaeology View) ###
 	containerWindowType = {
 		name = "paragon_portrait_container_vertical_small"
 		size = { width = 100%% height = 100%% }
@@ -271,7 +271,7 @@ guiTypes = {
 			clipping = yes
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_ui_portrait_character_fade_large"
+				quadTextureSprite = "GFX_portrait_character_mid_close_up"
 				position = { x = 0 y = 0 }
 				orientation = center
 				centerPosition = yes
@@ -387,6 +387,25 @@ guiTypes = {
 				position = { x = 24 y = 92.5 }
 				centerPosition = yes
 			}
+			iconType = {
+				name = "experience_bar"
+				spriteType = "GFX_ui_progressbar_thick"
+				position = { x = 0 y = -17 }
+				orientation = center_down
+				centerPosition = yes
+			}
+			### COUNCILOR INFO ###
+			containerWindowType = {
+				name = "council_container"
+				size = { width = 30 height = 30 }
+				position = { x = -8 y = 48 }
+				orientation = upper_right
+				origo = upper_right
+				iconType = {
+					name = "council_position_icon"
+					spriteType = "GFX_council_position_icon"
+				}
+			}
 			### NAME AND TITLE ###
 			containerWindowType = {
 				name = "name_container"
@@ -440,37 +459,14 @@ guiTypes = {
 					alwaysTransparent = yes
 				}
 			}
-			### COUNCILOR INFO ###
-			containerWindowType = {
-				name = "council_container"
-				size = { width = 30 height = 30 }
-				position = { x = -8 y = 8 }
-				orientation = upper_right
-				origo = upper_right
-				iconType = {
-					name = "council_position_icon"
-					spriteType = "GFX_council_position_icon"
-				}
-			}
 			### TRAITS ###
 			overlappingElementsBoxType = {
 				name = "traits_overlapping_box"
-				size = { x = @trait_icon_size_h y = 178 }
-				position = { x = -43 y = 48 }
-				orientation = upper_right
-				format = top
-				direction = vertical
-			}
-			containerWindowType = {
-				name = "on_hover_container"
-				size = { width = 100% height = 100% }
-				iconType = {
-					name = "experience_bar"
-					spriteType = "GFX_ui_progressbar_thick"
-					position = { x = 0 y = -16 }
-					orientation = center_down
-					centerPosition = yes
-				}
+				size = { x = 200 y = @trait_icon_size_h }
+				position = { x = -100 y = 65 }
+				orientation = center
+				format = center
+				first_on_top = yes
 			}
 		}
 	}
@@ -485,9 +481,7 @@ guiTypes = {
 		}
 		containerWindowType = {
 			name = "character_portrait_container_clipping_mask"
-			size = { width = 254 height = 100 }
-			orientation = lower_left
-			origo = lower_left
+			size = { width = 100% height = 100% }
 			clipping = yes
 			iconType = {
 				name = "character_portrait"
@@ -602,7 +596,7 @@ guiTypes = {
 			orientation = lower_right
 		}
 	}
-	### PORTRAIT COMPONENT HORIZONTAL ###
+	### PORTRAIT COMPONENT HORIZONTAL (Fleet View, Planet View, Elections a.s.o.) ###
 	containerWindowType = {
 		name = "paragon_portrait_container_horizontal"
 		size = { width = 100%% height = 100%% }
@@ -891,16 +885,20 @@ guiTypes = {
 		### PORTRAIT ###
 		containerWindowType = {
 			name = "character_portrait_container_clipping_mask"
-			size = { width = 265 height = 86 }
+			size = { width = 150 height = 86 }
 			position = { x = 5 y = 1 }
 			clipping = yes
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_ui_portrait_character_leaders"
-				position = { x = -20 y = 0 }
-				scale = 0.28
-				alwaysTransparent = yes
+				quadTextureSprite = "GFX_portrait_character_close_up"
+				position = { x = -20 y = -20 }
+				scale = 0.30
 			}
+		}
+		buttonType = {
+			name = "assign_character_button"
+			quadTextureSprite = "GFX_invisible"
+			size = { x = 100 y = @slim_row_h }
 		}
 		### RARITY ##
 		iconType = {
@@ -953,16 +951,9 @@ guiTypes = {
 		containerWindowType = {
 			name = "council_container"
 			iconType = {
-				name = "council_position_bg"
-				spriteType = "GFX_leader_info_bg"
-				position = { x = 385 y = 25 }
-				centerPosition = yes
-				alwaysTransparent = yes
-			}
-			iconType = {
 				name = "council_position_icon"
 				spriteType = "GFX_council_position_icon"
-				position = { x = 385 y = 25 }
+				position = { x = 115 y = 25 }
 				centerPosition = yes
 			}
 			instantTextBoxType = {
@@ -974,6 +965,12 @@ guiTypes = {
 				fixedSize = yes
 				format = left
 				vertical_alignment = center
+				alwaysTransparent = yes
+			}
+			iconType = {
+				name = "status_on_council_overlay" # UI LEADERS PATCH
+				position = { x = 3 y = 0 }
+				spriteType = "GFX_leader_status_on_council"
 				alwaysTransparent = yes
 			}
 		}
@@ -1116,61 +1113,32 @@ guiTypes = {
 		### LEADER IDLE ###
 		containerWindowType = {
 			name = "available_container"
-			size = { width = 100%% height = 40 }
-			position = { x = 420 y = 0 }
-			containerWindowType = {
-				name = "status_container"
-				size = { width = 42 height = 20 }
-				position = { x = -3 y = 6 }
-				orientation = upper_right
-				origo = upper_right
-				iconType = {
-					name = "status_bg"
-					spriteType = "GFX_leader_status_bg_no_assignment"
-					pdx_tooltip = "LEADER_MISSING_ASSIGNMENT"
-				}
-				iconType = {
-					name = "status_icon"
-					spriteType = "GFX_leader_status_icon_no_assignment"
-					position = { x = 22 y = 2 }
-					alwaysTransparent = yes
-				}
+			size = { width = 42 height = 20 }
+			position = { x = -3 y = 6 }
+			orientation = upper_right
+			origo = upper_right
+			iconType = {
+				name = "status_bg"
+				spriteType = "GFX_leader_status_bg_no_assignment"
+				pdx_tooltip = "LEADER_MISSING_ASSIGNMENT"
 			}
-			instantTextBoxType = {
-				name = "available_text"
-				font = "font_text_16"
-				text = "LEADER_IDLING_IN"
-				position = { x = 35 y = @horizontal_slim_title_pos_y }
-				maxWidth = 200
-				maxHeight = 20
-				fixedSize = yes
-				format = left
-				vertical_alignment = center
-				alwaysTransparent = yes
-			}
-			instantTextBoxType = {
-				name = "idle_text"
-				font = "font_text_14"
-				text = "UNASSIGNED"
-				position = { x = 35 y = @horizontal_slim_subtitle_pos_y }
-				maxWidth = 240
-				maxHeight = 35
-				fixedSize = yes
-				format = left
-				vertical_alignment = top
+			iconType = {
+				name = "status_icon"
+				spriteType = "GFX_leader_status_icon_no_assignment"
+				position = { x = 22 y = 2 }
 				alwaysTransparent = yes
 			}
 		}
 		instantTextBoxType = {
 			name = "upkeep_text"
 			font = "font_text_16"
-			position = { x = -98 y = -47 }
-			orientation = lower_right
+			position = { x = -98 y = 62 }
+			orientation = upper_right
 			maxWidth = 90
-			maxHeight = 40
+			maxHeight = 20
 			fixedSize = yes
 			format = right
-			vertical_alignment = bottom
+			vertical_alignment = center
 		}
 		containerWindowType = {
 			name = "owned_by_player_container"
@@ -1206,7 +1174,6 @@ guiTypes = {
 			name = "leader_class_banner"
 			spriteType = "GFX_leader_class_bg_list"
 			position = { x = 9 y = 1.5 }
-			alwaysTransparent = yes
 		}
 		### PORTRAIT ###
 		containerWindowType = {
@@ -1316,6 +1283,12 @@ guiTypes = {
 				scale = 0.95
 				alwaysTransparent = yes
 			}
+			iconType = {
+				name = "already_on_council_overlay" # UI LEADERS PATCH
+				position = { x = 3 y = 0 }
+				spriteType = "GFX_leader_already_on_council"
+				alwaysTransparent = yes
+			}
 		}
 		containerWindowType = {
 			name = "not_on_council_container"
@@ -1338,7 +1311,7 @@ guiTypes = {
 		### TRAITS ###
 		overlappingElementsBoxType = {
 			name = "traits_overlapping_box"
-			size = { x = 270 y = @trait_icon_size_h }
+			size = { x = 300 y = @trait_icon_size_h }
 			position = { x = 135 y = 50 }
 			first_on_top = yes
 		}
@@ -1396,86 +1369,16 @@ guiTypes = {
 				alwaysTransparent = yes
 			}
 		}
-		### LEADER ASSIGNED ###
-		containerWindowType = {
-			name = "busy_container"
-			size = { width = 100%% height = 40 }
-			position = { x = 420 y = 0 }
-			iconType = {
-				name = "location_primary_icon"
-				spriteType = "GFX_planet_view_planet"
-				position = { x = 8 y = 25 }
-				centerPosition = yes
-				alwaysTransparent = yes
-			}
-			buttonType = {
-				name = "location_secondary_button"
-				spriteType = "GFX_planet_view_planet"
-				position = { x = 0 y = 14 }
-				alwaysTransparent = yes
-			}
-			instantTextBoxType = {
-				name = "location_text"
-				font = "font_text_16"
-				position = { x = 35 y = @horizontal_slim_title_pos_y }
-				maxWidth = 240
-				maxHeight = 20
-				fixedSize = yes
-				format = left
-				vertical_alignment = center
-				alwaysTransparent = yes
-			}
-			instantTextBoxType = {
-				name = "activity_text"
-				font = "font_text_14"
-				position = { x = 35 y = @horizontal_slim_subtitle_pos_y }
-				maxWidth = 240
-				maxHeight = 35
-				fixedSize = yes
-				format = left
-				vertical_alignment = top
-				alwaysTransparent = yes
-			}
-		}
-		containerWindowType = {
-			name = "available_container"
-			size = { width = 100%% height = 40 }
-			position = { x = 420 y = 0 }
-			instantTextBoxType = {
-				name = "available_text"
-				font = "font_text_16"
-				text = "LEADER_IDLING_IN"
-				position = { x = 35 y = @horizontal_slim_title_pos_y }
-				maxWidth = 200
-				maxHeight = 20
-				fixedSize = yes
-				format = left
-				vertical_alignment = center
-				alwaysTransparent = yes
-			}
-			instantTextBoxType = {
-				name = "idle_text"
-				font = "font_text_14"
-				text = "UNASSIGNED"
-				position = { x = 35 y = @horizontal_slim_subtitle_pos_y }
-				maxWidth = 240
-				maxHeight = 35
-				fixedSize = yes
-				format = left
-				vertical_alignment = top
-				alwaysTransparent = yes
-			}
-		}
 		instantTextBoxType = {
 			name = "upkeep_text"
 			font = "font_text_16"
-			position = { x = -98 y = -47 }
-			orientation = lower_right
-			maxWidth = 90
-			maxHeight = 40
+			position = { x = -108 y = 62 }
+			orientation = upper_right
+			maxWidth = 100
+			maxHeight = 20
 			fixedSize = yes
 			format = right
-			vertical_alignment = bottom
+			vertical_alignment = center
 			alwaysTransparent = yes
 		}
 		containerWindowType = {
@@ -1546,21 +1449,24 @@ guiTypes = {
 			name = "leader_class_banner"
 			spriteType = "GFX_leader_class_bg_list"
 			position = { x = 9 y = 1.5 }
-			alwaysTransparent = yes
 		}
 		### PORTRAIT ###
 		containerWindowType = {
 			name = "character_portrait_container_clipping_mask"
-			size = { width = 246 height = 86 }
+			size = { width = 150 height = 86 }
 			position = { x = 5 y = 1 }
 			clipping = yes
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_ui_portrait_character_leaders"
-				position = { x = -20 y = 0 }
-				scale = 0.28
-				alwaysTransparent = yes
+				quadTextureSprite = "GFX_portrait_character_close_up"
+				position = { x = -20 y = -20 }
+				scale = 0.30
 			}
+		}
+		buttonType = {
+			name = "assign_character_button"
+			quadTextureSprite = "GFX_invisible"
+			size = { x = 100 y = @slim_row_h }
 		}
 		### RARITY ###
 		iconType = {
@@ -1621,16 +1527,9 @@ guiTypes = {
 		containerWindowType = {
 			name = "council_container"
 			iconType = {
-				name = "council_position_bg"
-				spriteType = "GFX_leader_info_bg"
-				position = { x = 385 y = 25 }
-				centerPosition = yes
-				alwaysTransparent = yes
-			}
-			iconType = {
 				name = "council_position_icon"
 				spriteType = "GFX_council_position_icon"
-				position = { x = 385 y = 25 }
+				position = { x = 115 y = 25 }
 				centerPosition = yes
 			}
 			instantTextBoxType = {
@@ -1648,7 +1547,7 @@ guiTypes = {
 		### TRAITS ###
 		overlappingElementsBoxType = {
 			name = "traits_overlapping_box"
-			size = { x = 270 y = @trait_icon_size_h }
+			size = { x = 300 y = @trait_icon_size_h }
 			position = { x = 135 y = 50 }
 			first_on_top = yes
 		}
@@ -1772,61 +1671,32 @@ guiTypes = {
 		### LEADER AVAILABLE ###
 		containerWindowType = {
 			name = "available_container"
-			size = { width = 100%% height = 40 }
-			position = { x = 420 y = 0 }
-			containerWindowType = {
-				name = "status_container"
-				size = { width = 42 height = 20 }
-				position = { x = -3 y = 6 }
-				orientation = upper_right
-				origo = upper_right
-				iconType = {
-					name = "status_bg"
-					spriteType = "GFX_leader_status_bg_no_assignment"
-					pdx_tooltip = "LEADER_MISSING_ASSIGNMENT"
-				}
-				iconType = {
-					name = "status_icon"
-					spriteType = "GFX_leader_status_icon_no_assignment"
-					position = { x = 22 y = 2 }
-					alwaysTransparent = yes
-				}
+			size = { width = 42 height = 20 }
+			position = { x = -3 y = 6 }
+			orientation = upper_right
+			origo = upper_right
+			iconType = {
+				name = "status_bg"
+				spriteType = "GFX_leader_status_bg_no_assignment"
+				pdx_tooltip = "LEADER_MISSING_ASSIGNMENT"
 			}
-			instantTextBoxType = {
-				name = "available_text"
-				font = "font_text_16"
-				text = "LEADER_IDLING_IN"
-				position = { x = 35 y = @horizontal_slim_title_pos_y }
-				maxWidth = 200
-				maxHeight = 20
-				fixedSize = yes
-				format = left
-				vertical_alignment = center
-				alwaysTransparent = yes
-			}
-			instantTextBoxType = {
-				name = "idle_text"
-				font = "font_text_14"
-				text = "UNASSIGNED"
-				position = { x = 35 y = @horizontal_slim_subtitle_pos_y }
-				maxWidth = 240
-				maxHeight = 35
-				fixedSize = yes
-				format = left
-				vertical_alignment = top
+			iconType = {
+				name = "status_icon"
+				spriteType = "GFX_leader_status_icon_no_assignment"
+				position = { x = 22 y = 2 }
 				alwaysTransparent = yes
 			}
 		}
 		instantTextBoxType = {
 			name = "upkeep_text"
 			font = "font_text_16"
-			position = { x = -98 y = -47 }
-			orientation = lower_right
-			maxWidth = 90
-			maxHeight = 40
+			position = { x = -108 y = 62 }
+			orientation = upper_right
+			maxWidth = 100
+			maxHeight = 20
 			fixedSize = yes
 			format = right
-			vertical_alignment = bottom
+			vertical_alignment = center
 		}
 		containerWindowType = {
 			name = "owned_by_player_container"
@@ -1850,7 +1720,6 @@ guiTypes = {
 	containerWindowType = {
 		name = "paragon_portrait_container_expanded"
 		size = { width = 100% height = 100% }
-		clipping = no
 		background = {
 			name = "paragon_portrait_container_expanded"
 			spriteType = "GFX_invisible"
@@ -1878,12 +1747,17 @@ guiTypes = {
 			}
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_ui_portrait_character_leaders_expanded"
-				position = { x = 0 y = 7 }
+				quadTextureSprite = "GFX_portrait_character_mid_close_up"
+				position = { x = 0 y = -10 }
 				orientation = center
 				centerPosition = yes
 				scale = 1
 			}
+		}
+		buttonType = {
+			name = "assign_character_button"
+			quadTextureSprite = "GFX_invisible"
+			size = { x = 100 y = 100 }
 		}
 		### RARITY ###
 		iconType = {
@@ -2115,32 +1989,18 @@ guiTypes = {
 		overlappingElementsBoxType = {
 			name = "traits_overlapping_box"
 			size = { x = @trait_icon_size_h y = 306 }
-			position = { x = -48 y = 88 }
+			position = { x = -48 y = 100 }
 			orientation = upper_right
-			format = top
+			format = center
+			first_on_top = yes
 			direction = vertical
-		}
-		containerWindowType = {
-			name = "leader_background_text_background"
-			size = { width = 100% height = 100 }
-			position = { x = 0 y = 520 }
-			background = {
-				name = "background"
-				spriteType = "GFX_ui_text_background"
-				alwaysTransparent = yes
-			}
-			background = {
-				name = "background_darker"
-				spriteType = "GFX_ui_text_background"
-				alwaysTransparent = yes
-			}
 		}
 		instantTextBoxType = {
 			name = "leader_background_text"
 			font = "font_text_16"
-			position = { x = 10 y = 530 }
-			maxWidth = 414
-			maxHeight = 80
+			position = { x = 20 y = 390 }
+			maxWidth = 394
+			maxHeight = 118
 			format = center
 			vertical_alignment = center
 			text_color_code = "E"
@@ -2197,7 +2057,7 @@ guiTypes = {
 					position = { x = -60 y = 0 }
 					iconType = { # gets flipped
 						name = "character_portrait"
-						quadTextureSprite = "GFX_portrait_character_council"
+						quadTextureSprite = "GFX_portrait_character_hologram"
 						scale = 0.57
 						alwaysTransparent = yes
 					}
@@ -2271,9 +2131,9 @@ guiTypes = {
 		### LEADER ASSIGNMENT ###
 		buttonType = {
 			name = "assign_character_button"
-			spriteType = "GFX_invisible"
 			position = { x = 0 y = 80 }
 			size = { x = 188 y = 160 }
+			spriteType = "GFX_invisible"
 		}
 		containerWindowType = {
 			name = "on_hover_assign_container"
@@ -2526,6 +2386,7 @@ guiTypes = {
 		background = { # hitbox for hovering
 			name = "paragon_portrait_container_council_gestalt"
 			spriteType = "GFX_invisible"
+			#alwaysTransparent = yes
 		}
 		containerWindowType = {
 			name = "leader_container"
@@ -2606,9 +2467,9 @@ guiTypes = {
 		}
 		buttonType = {
 			name = "assign_character_button"
-			spriteType = "GFX_invisible"
 			position = { x = 0 y = 80 }
 			size = { x = 188 y = 160 }
+			spriteType = "GFX_invisible"
 		}
 		### PORTRAIT ###
 		containerWindowType = {
@@ -2621,7 +2482,7 @@ guiTypes = {
 			}
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_portrait_character_council_ruler"
+				quadTextureSprite = "GFX_portrait_character_hologram"
 				position = { x = -100 y = -10 }
 				scale = 0.7
 				alwaysTransparent = yes
@@ -2913,12 +2774,14 @@ guiTypes = {
 		### PORTRAIT ###
 		containerWindowType = {
 			name = "character_portrait_container_council_clipping_mask"
-			size = { width = 100%% height = 100%% }
+			size = { width = 752 height = 340 }
 			clipping = no
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_portrait_gamesetup_mask_character_without_room"
-				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_portrait_character_mid_close_up"
+				position = { x = -40 y = -10 }
+				orientation = center
+				centerPosition = yes
 			}
 			iconType = {
 				name = "stripes_1"
@@ -3087,17 +2950,6 @@ guiTypes = {
 					spriteType = "GFX_tiles_dark_area_cut_8"
 				}
 			}
-			containerWindowType = {
-				name = "footer_background"
-				size = { width = -5 height = 46 }
-				position = { x = 5 y = -5 }
-				orientation = lower_left
-				origo = lower_left
-				background = {
-					name = "footer_background"
-					spriteType = "GFX_tiles_dark_area_cut_8"
-				}
-			}
 			### SKILL ###
 			iconType = {
 				name = "skill_icon_bg"
@@ -3226,6 +3078,13 @@ guiTypes = {
 			format = left
 			vertical_alignment = center
 		}
+		buttonType = {
+			name = "assign_character_button"
+			quadTextureSprite = "GFX_invisible"
+			size = { x = 90 y = 100 }
+			position = { x = 0 y = 6 }
+			alwaysTransparent = yes
+		}
 		instantTextBoxType = {
 			name = "leader_class_text"
 			font = "font_text_16"
@@ -3239,8 +3098,8 @@ guiTypes = {
 		}
 		overlappingElementsBoxType = {
 			name = "traits_overlapping_box"
-			size = { x = 250 y = @trait_icon_size_h }
-			position = { x = -260 y = -42 }
+			size = { x = 140 y = @trait_icon_size_h }
+			position = { x = -150 y = -42 }
 			orientation = lower_right
 			first_on_top = yes
 		}
@@ -3259,10 +3118,16 @@ guiTypes = {
 		iconType = {
 			name = "bg_head_of_research"
 			spriteType = "GFX_bg_head_of_research"
-			position = { x = -112 y = 0 }
+			position = { x = -110 y = 0 }
 			orientation = center
 			centerPosition = yes
 			alwaysTransparent = yes
+		}
+		buttonType = {
+			name = "assign_character_button"
+			quadTextureSprite = "GFX_invisible"
+			size = { x = 190 y = 190 }
+			position = { x = 50 y = 15 }
 		}
 		### EMPTY SLOT ##
 		containerWindowType = {
@@ -3305,36 +3170,34 @@ guiTypes = {
 				clipping = yes
 				iconType = {
 					name = "character_portrait"
-					quadTextureSprite = "GFX_ui_portrait_character_research"
-					position = { x = -50 y = 0 }
+					quadTextureSprite = "GFX_portrait_character_mid_close_up"
+					position = { x = -120 y = 0 }
 					orientation = center
 					centerPosition = yes
-					scale = 0.699
+					scale = 0.62
 					alwaysTransparent = yes
 				}
 			}
 			### RARITY #
 			iconType = {
 				name = "leader_rarity_icon"
+				position = { x = -10 y = -14 }
 				spriteType = "GFX_leader_rarity_research"
-				position = { x = -3 y = 0 }
-				orientation = center_left
-				centerPosition = yes
 			}
 			### CLASS ###
 			iconType = {
 				name = "leader_type"
 				quadTextureSprite = "GFX_leader_icons_large"
-				position = { x = 0 y = 20 }
+				position = { x = 0 y = 10 }
 			}
 			containerWindowType = {
 				name = "leader_subclass_layered_icon_locator_1"
-				position = { x = 10 y = 64 }
+				position = { x = 10 y = 54 }
 			}
 			### SKILL ###
 			containerWindowType = {
 				name = "skill_container"
-				position = { x = 10 y = 100 }
+				position = { x = 10 y = 90 }
 				size = { width = 32 height = 37 }
 				iconType = {
 					name = "skill_icon_bg"
@@ -3354,25 +3217,25 @@ guiTypes = {
 			iconType = {
 				name = "council_position_icon"
 				spriteType = "GFX_council_position_icon"
-				position = { x = 12 y = 142 }
+				position = { x = 12 y = 132 }
 			}
 			### NAME AND TITLE ###
 			iconType = {
 				name = "hex_bg"
 				spriteType = "GFX_hex_bg"
-				position = { x = 220 y = 1 }
+				position = { x = 220 y = -8 }
 				alwaysTransparent = yes
 			}
 			iconType = {
 				name = "hex_bg_2"
 				spriteType = "GFX_hex_bg"
-				position = { x = 220 y = 26 }
+				position = { x = 220 y = 16 }
 				alwaysTransparent = yes
 			}
 			instantTextBoxType = {
 				name = "name_without_title_text"
 				font = "font_text_16"
-				position = { x = 250 y = 20 }
+				position = { x = 250 y = 10 }
 				maxWidth = 280
 				maxHeight = 25
 				fixedSize = yes
@@ -3382,14 +3245,14 @@ guiTypes = {
 			}
 			buttonType = {
 				name = "rename_leader"
-				position = { x = 250 y = 20 }
+				position = { x = 250 y = 10 }
 				size = { x = 280 y = 25 }
 				quadTextureSprite = "GFX_invisible"
 			}
 			instantTextBoxType = {
 				name = "councilor_title"
 				font = "font_text_16"
-				position = { x = 250 y = 45 }
+				position = { x = 250 y = 35 }
 				maxWidth = 280
 				maxHeight = 25
 				fixedSize = yes
@@ -3399,7 +3262,7 @@ guiTypes = {
 			instantTextBoxType = {
 				name = "leader_class_text"
 				font = "font_text_16"
-				position = { x = 250 y = 45 }
+				position = { x = 250 y = 35 }
 				maxWidth = 280
 				maxHeight = 25
 				fixedSize = yes
@@ -3411,16 +3274,10 @@ guiTypes = {
 			overlappingElementsBoxType = {
 				name = "traits_overlapping_box"
 				size = { x = 225 y = @trait_icon_size_h }
-				position = { x = 250 y = 80 }
+				position = { x = 250 y = 70 }
 				format = left
 				first_on_top = yes
 			}
-		}
-		buttonType = {
-			name = "assign_character_button"
-			quadTextureSprite = "GFX_invisible"
-			size = { x = 190 y = 200 }
-			position = { x = 50 y = 15 }
 		}
 	}
 	###	PORTRAIT COMPONENT RECRUITMENT EVENT ###
@@ -3659,7 +3516,7 @@ guiTypes = {
 	###	PORTRAIT COMPONENT CONVERSATION EVENT ###
 	containerWindowType = {
 		name = "paragon_portrait_container_conversation_event"
-		size = { width = 100%% height = 100%% }
+		size = { width = 370 height = 500 }
 		clipping = no
 		background = {
 			name = "paragon_portrait_container_conversation_event"
@@ -3673,11 +3530,8 @@ guiTypes = {
 			clipping = no
 			iconType = {
 				name = "character_portrait"
-				quadTextureSprite = "GFX_portrait_character_large_event"
-				position = { x = 0 y = -100 }
-				orientation = center
-				centerPosition = yes
-				scale = 1.25
+				quadTextureSprite = "GFX_portrait_character_large"
+				position = { x = -70 y = -155 }
 			}
 		}
 	}
